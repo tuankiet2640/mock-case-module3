@@ -15,6 +15,7 @@ import java.util.List;
 
 public class UserDAO implements IUserDAO {
     private final String select_all_user="SELECT*FROM users";
+
     @Override
     public List<User> getAllUser() {
         UserService userService=new UserService();

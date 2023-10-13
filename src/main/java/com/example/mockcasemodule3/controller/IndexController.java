@@ -22,6 +22,7 @@ public class IndexController extends HttpServlet {
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html");
 
         IPropertyDAO propertyDAO= new PropertyDAO();

@@ -18,9 +18,19 @@ public class Property {
         this.address = address;
         this.seller=seller;
     }
+
+    public Property(String propertyName, double propertyPrice, int area, Address address, Seller seller) {
+        this.propertyName = propertyName;
+        this.propertyPrice = propertyPrice;
+        this.area = area;
+        this.address = address;
+        this.seller = seller;
+    }
+
     public Property(){
 
     }
+
 
     public int getPropertyId() {
         return propertyId;
@@ -60,4 +70,13 @@ public class Property {
     public Address getAddress() {
         return this.address;
     }
+
+    public Seller getSeller() {
+        return this.seller;
+    }
+
+    public void setSeller(Seller seller) {
+        this.seller = seller;
+    }
+
 }

@@ -21,38 +21,25 @@
 
 </head>
 <body>
+
 <h1>DELETE PROPERTY</h1>
-<form action="/login/seller" method="post">
-
-    <input type="hidden" name="action" value="delete">
-
-    Property ID:
-    <input type="text" name="propertyId" value="${property.id}"><br>
-
-    <input type="submit" value="Delete Property">
-
-</form>
-<%
-    PropertyDAO propertyDAO= new PropertyDAO();
-    List<Property> properties = propertyDAO.getAllProperty();
-    request.setAttribute("properties", properties);
-%>
-<div class="property-list">
-
-    <h2>Properties</h2>
-
-    <c:forEach items="${properties}" var="property">
-        <div class="property-item">
-            <h3><c:out value="${property.propertyName}"/></h3>
-            <p>id: <c:out value="${property.propertyId}"/></p>
-            <p>address: <c:out value="${property.address}"/></p>
-            <p>area: <c:out value="${property.area}"/></p>
-            <p>Price: <c:out value="${property.propertyPrice}"/></p>
-        </div>
-
-    </c:forEach>
+<div>
+    <h3>${property.propertyName}</h3>
+    <p>Property name: ${property.address}</p>
+    <p>Property area: ${property.area}</p>
+    <p>Property price: ${property.propertyPrice}</p>
 
 </div>
+<form action="${pageContext.request.contextPath}/seller" method="post">
+    <h2>BAN CO CHAC KHONG</h2>
+
+    <input type="hidden" name="propertyId" value="${property.propertyId}"><br>
+    <input type="hidden" name="action" value="delete">
+
+    <input type="submit" name="choice" value="YES">
+    <input type="submit" name="choice" value="NO" >
+
+</form>
 
 
 </body>

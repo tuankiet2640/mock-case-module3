@@ -9,4 +9,5 @@ public interface IAddressDAO {
     Address getAddressById(int id);
     List<Address> getAllAddresses();
     boolean editAddress(Address address);
+    int createNewAddress(Address address);
 }

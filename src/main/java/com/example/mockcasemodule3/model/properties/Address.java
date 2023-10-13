@@ -12,6 +12,13 @@ public class Address {
         this.district = district;
         this.houseNumber = houseNumber;
     }
+
+    public Address(String city, String district, String houseNumber) {
+        this.city = city;
+        this.district = district;
+        this.houseNumber = houseNumber;
+    }
+
     public Address(){
 
     }
@@ -55,4 +62,5 @@ public class Address {
                 ", houseNumber='" + houseNumber + '\'' +
                 '}';
     }
+
 }

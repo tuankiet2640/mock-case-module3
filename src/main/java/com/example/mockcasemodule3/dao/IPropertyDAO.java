@@ -8,7 +8,7 @@ import java.util.List;
 public interface IPropertyDAO {
     List<Property> getAllProperty();
     Property getOneProperty();
-    boolean addNewProperty();
+    boolean addNewProperty(Property property);
     boolean editProperty(Property property);
     boolean removeProperty(int id);
     void addOneProperty(Property property);

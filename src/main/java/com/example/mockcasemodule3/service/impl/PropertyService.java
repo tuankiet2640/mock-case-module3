@@ -8,6 +8,7 @@ import java.util.List;
 
 public class PropertyService implements IPropertyService {
     PropertyDAO propertyDAO= new PropertyDAO();
+    @Override
     public Property getPropertyById(int propertyId) {
         List<Property> properties= propertyDAO.getAllProperty();
         for (Property property:properties){
@@ -16,5 +17,9 @@ public class PropertyService implements IPropertyService {
             }
         }
         return null;
+    }
+    @Override
+    public boolean removePropertyById(int propertyId) {
+        return propertyDAO.removeProperty(propertyId);
     }
 }

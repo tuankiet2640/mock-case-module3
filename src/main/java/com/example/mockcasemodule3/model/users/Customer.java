@@ -5,7 +5,6 @@ public class Customer extends User{
     private String hoTen;
     private String email;
 
-
     public Customer() {
     }
     public Customer(int id, String username, String password, String phoneNumber, String hoTen, String email) {

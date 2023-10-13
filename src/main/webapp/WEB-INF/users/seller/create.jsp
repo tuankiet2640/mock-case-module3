@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.example.mockcasemodule3.model.users.Seller" %><%--
   Created by IntelliJ IDEA.
   User: Admin
   Date: 10/9/2023
@@ -11,29 +11,32 @@
     <title>Adding New Property</title>
 </head>
 <body>
+
+<%
+    Seller seller = (Seller) session.getAttribute("seller");
+    int sellerId= seller.getSellerId();
+    request.setAttribute("sellerId",sellerId);
+%>
 <h1>Create Property</h1>
-<form action="/login/seller" method="post">
+<form action="/seller" method="post">
 
-    <input type="hidden" name="action" value="edit">
-
-    Property ID:
-    <input type="text" name="propertyId" value="${property.id}"><br>
+    <input type="hidden" name="action" value="create">
+    <input type="hidden" name="sellerId" value=${sellerId}>
 
     Name:
-    <input type="text" name="name" value="${property.name}"><br>
-
-    City:
-    <input type="text" name="city" value="${property.address.city}"><br>
-    Name:
-    <input type="text" name="district" value="${property.address.district}"><br>
-    Name:
-    <input type="text" name="houseNumber" value="${property.address.houseNumber}"><br>
-
+    <input type="text" name="propertyName"><br>
     Price:
-    <input type="text" name="price" value="${property.price}"><br>
+    <input type="text" name="propertyPrice"><br>
 
     Area:
-    <input type="text" name="area" value="${property.area}"><br>
+    <input type="text" name="area"><br>
+
+    City:
+    <input type="text" name="city"><br>
+    District:
+    <input type="text" name="district"><br>
+    House number:
+    <input type="text" name="houseNumber"><br>
 
     <input type="submit" value="Create Property">
 

@@ -12,7 +12,8 @@
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            padding: 0;
+            padding: 60px;
+            overflow-y: auto;
         }
 
         header {
@@ -40,12 +41,42 @@
             margin-bottom: 10px;
             background-color: #f9f9f9;
         }
+        #navbar {
+            background: #333;
+            color: #fff;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            max-height: 60px;
+        }
+
+        #navbar ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        #navbar li {
+            display: inline-block;
+        }
+
+        #navbar a {
+            color: #fff;
+            text-decoration: none;
+            padding: 15px 20px;
+            display: block;
+        }
+
     </style>
 </head>
 <body>
+
 <header>
     <h1>Welcome to Winz Real Estat3!</h1>
-    <a href="login.jsp" class="login-button">Login</a>
+    <div id="navbar">
+        <jsp:include page="navbar.jsp"/>
+    </div>
 </header>
 
 <%
@@ -64,6 +95,8 @@
             <p>address: <c:out value="${property.address}"/></p>
             <p>area: <c:out value="${property.area}"/></p>
             <p>Price: <c:out value="${property.propertyPrice}"/></p>
+            <p>Seller: <c:out value="${property.seller}"/></p>
+
         </div>
 
     </c:forEach>

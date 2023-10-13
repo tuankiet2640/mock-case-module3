@@ -22,17 +22,19 @@
 </head>
 
 <body>
+<%
+
+%>
+
 <h1>Edit property</h1>
 
-<form action="/login/seller" method="post">
+<form action="${pageContext.request.contextPath}/seller" method="post">
 
     <input type="hidden" name="action" value="edit">
-
-    Property ID:
-    <input type="text" name="propertyId" value="${property.id}"><br>
+    <input type="hidden" name="propertyId" value="${property.propertyId}"><br>
 
     Name:
-    <input type="text" name="name" value="${property.name}"><br>
+    <input type="text" name="propertyName" value="${property.propertyName}"><br>
 
     City:
     <input type="text" name="city" value="${property.address.city}"><br>
@@ -42,10 +44,14 @@
     <input type="text" name="houseNumber" value="${property.address.houseNumber}"><br>
 
     Price:
-    <input type="text" name="price" value="${property.price}"><br>
+    <input type="text" name="price" value="${property.propertyPrice}"><br>
 
     Area:
     <input type="text" name="area" value="${property.area}"><br>
+
+    <button class="btn btn-lg btn-success">
+        <a href="${pageContext.request.contextPath}/seller">Cancel</a>
+    </button>
 
     <input type="submit" value="Update Property">
 
@@ -53,28 +59,6 @@
 
 
 
-
-<%
-    PropertyDAO propertyDAO= new PropertyDAO();
-    List<Property> properties = propertyDAO.getAllProperty();
-    request.setAttribute("properties", properties);
-%>
-<div class="property-list">
-
-    <h2>Properties</h2>
-
-    <c:forEach items="${properties}" var="property">
-        <div class="property-item">
-            <h3><c:out value="${property.propertyName}"/></h3>
-            <p>id: <c:out value="${property.propertyId}"/></p>
-            <p>address: <c:out value="${property.address}"/></p>
-            <p>area: <c:out value="${property.area}"/></p>
-            <p>Price: <c:out value="${property.propertyPrice}"/></p>
-        </div>
-
-    </c:forEach>
-
-</div>
 
 
 </body>

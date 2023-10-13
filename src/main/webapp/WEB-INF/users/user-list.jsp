@@ -46,21 +46,6 @@
         </C:forEach>
         </tbody>
     </table>
-<%--    <div>--%>
-<%--        <form action="AdminController" method="get">--%>
-<%--            <input type="hidden" name="action" value="create">--%>
-<%--            <input type="submit" value="Create Property">--%>
-<%--        </form>--%>
 
-<%--        <form action="AdminController" method="get">--%>
-<%--            <input type="hidden" name="action" value="edit">--%>
-<%--            <input type="submit" value="Edit Property">--%>
-<%--        </form>--%>
-
-<%--        <form action="AdminController" method="get">--%>
-<%--            <input type="hidden" name="action" value="delete">--%>
-<%--            <input type="submit" value="Delete Userty">--%>
-<%--        </form>--%>
-<%--    </div>--%>
 </body>
 </html>

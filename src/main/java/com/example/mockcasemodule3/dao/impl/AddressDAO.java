@@ -5,17 +5,15 @@ import com.example.mockcasemodule3.model.properties.Address;
 import com.example.mockcasemodule3.model.properties.Property;
 import com.example.mockcasemodule3.utils.JDBCConnection;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class AddressDAO implements IAddressDAO {
     private final String GET_ALL_ADDRESSES = "SELECT * FROM address";
     private final String UPDATE_ADDRESS= "UPDATE address SET city=?, district=?, house_number=? WHERE address_id=?";
-    List<Address> addresses= getAllAddresses();
+    private final String INSERT_NEW_ADDRESS="INSERT INTO address (city, district, house_number) VALUES (?,?,?)";
+
     @Override
     public List<Address> getAllAddresses() {
         List<Address> addressList = new ArrayList<>();
@@ -59,8 +57,38 @@ public class AddressDAO implements IAddressDAO {
     }
 
     @Override
+    public int createNewAddress(Address address) {
+        int addressId;
+        try (Connection connection = JDBCConnection.getConnection()) {
+            PreparedStatement preparedStatement=connection.prepareStatement(INSERT_NEW_ADDRESS, Statement.RETURN_GENERATED_KEYS);
+            preparedStatement.setString(1,address.getCity());
+            preparedStatement.setString(2,address.getDistrict());
+            preparedStatement.setString(3,address.getHouseNumber());
+
+            int affectedRows = preparedStatement.executeUpdate();
+
+            if (affectedRows == 0) {
+                throw new SQLException("Creating user failed, no rows affected.");
+            }
+
+            try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    address.setAddressId(generatedKeys.getInt(1));
+                    addressId= generatedKeys.getInt(1);
+                }
+                else {
+                    throw new SQLException("Creating user failed, no ID obtained.");
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return addressId;
+    }
+
+    @Override
     public Address getAddressById(int id) {
-       for (Address address: addresses){
+       for (Address address: getAllAddresses()){
            if (id==address.getAddressId()){
                return address;
            }
