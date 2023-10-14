@@ -6,8 +6,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
 </head>
-<body>
-<p>
+<body >
+<p charset="UTF-8">
 About
 /ə'baʊt/
 Thông dụng

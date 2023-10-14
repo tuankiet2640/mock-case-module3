@@ -73,7 +73,7 @@
 <body>
 
 <header>
-    <h1>Welcome to Winz Real Estat3!</h1>
+    <h1>Welcome to >>>>!</h1>
     <div id="navbar">
         <jsp:include page="navbar.jsp"/>
     </div>

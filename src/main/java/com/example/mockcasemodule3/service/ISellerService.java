@@ -1,8 +1,15 @@
 package com.example.mockcasemodule3.service;
 
+import com.example.mockcasemodule3.model.properties.Property;
 import com.example.mockcasemodule3.model.users.Seller;
 
+import java.sql.SQLException;
+import java.util.List;
+
 public interface ISellerService {
-    Seller getSellerByUsername(String username);
-    Seller getSellerById(int id);
+    List<Seller> getAllSeller();
+    Seller getSellerById(int sellerId);
+    List<Property> getAllPropertyBySellerId (int sellerId) throws SQLException;
+    Seller getSellerByUsername (String username);
+    boolean addNewSeller(Seller seller);
 }

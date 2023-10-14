@@ -34,6 +34,7 @@ public class Seller{
         this.properties = properties;
     }
 
+
     public int getSellerId() {
         return sellerId;
     }

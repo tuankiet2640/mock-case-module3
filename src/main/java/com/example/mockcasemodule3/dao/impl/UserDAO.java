@@ -6,15 +6,13 @@ import com.example.mockcasemodule3.model.users.User;
 import com.example.mockcasemodule3.service.impl.UserService;
 import com.example.mockcasemodule3.utils.JDBCConnection;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class UserDAO implements IUserDAO {
     private final String select_all_user="SELECT*FROM users";
+    private final String REGISTER_NEW_USER="INSERT INTO users (username,password,role_id) VALUES (?,?,2)";
 
     @Override
     public List<User> getAllUser() {
@@ -46,8 +44,33 @@ public class UserDAO implements IUserDAO {
     }
 
     @Override
-    public boolean addNewUser(User user) {
-        return false;
+    public int addNewUser(User user) {
+        int userId;
+        try (Connection connection = JDBCConnection.getConnection()) {
+            PreparedStatement preparedStatement=connection.prepareStatement(REGISTER_NEW_USER, Statement.RETURN_GENERATED_KEYS);
+            preparedStatement.setString(1,user.getUsername());
+            preparedStatement.setString(2,user.getPassword());
+
+            int affectedRows = preparedStatement.executeUpdate();
+
+            if (affectedRows == 0) {
+                throw new SQLException("Creating user failed!");
+            }
+
+            try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    user.setId(generatedKeys.getInt(1));
+                    userId= generatedKeys.getInt(1);
+                }
+                else {
+                    throw new SQLException("Creating user failed.");
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return userId;
+
     }
 
     @Override
@@ -59,4 +82,16 @@ public class UserDAO implements IUserDAO {
     public boolean removeUser(int id) {
         return false;
     }
+
+    @Override
+    public String getHashedPassword(String username) {
+        List<User> users= getAllUser();
+        for (User user: users){
+            if (username.equals(user.getUsername())){
+                return user.getPassword();
+            }
+        }
+        return null;
+    }
 }
+

@@ -68,7 +68,7 @@ public class AddressDAO implements IAddressDAO {
             int affectedRows = preparedStatement.executeUpdate();
 
             if (affectedRows == 0) {
-                throw new SQLException("Creating user failed, no rows affected.");
+                throw new SQLException("Invalid Address.");
             }
 
             try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
@@ -77,7 +77,7 @@ public class AddressDAO implements IAddressDAO {
                     addressId= generatedKeys.getInt(1);
                 }
                 else {
-                    throw new SQLException("Creating user failed, no ID obtained.");
+                    throw new SQLException("Invalid Address");
                 }
             }
         } catch (SQLException e) {

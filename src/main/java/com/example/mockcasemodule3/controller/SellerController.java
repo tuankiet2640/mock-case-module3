@@ -140,7 +140,6 @@ public class SellerController extends HttpServlet {
         IPropertyDAO propertyDAO= new PropertyDAO();
         propertyDAO.addNewProperty(new Property(propertyName,propertyPrice,area,address,seller));
         res.sendRedirect("/seller");
-
     }
 
     protected void delete(HttpServletRequest req, HttpServletResponse res) throws IOException {

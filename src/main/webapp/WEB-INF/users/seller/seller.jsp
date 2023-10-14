@@ -83,7 +83,9 @@
     } catch (SQLException e) {
         throw new RuntimeException(e);
     }
-    request.setAttribute("properties", properties);
+    if (properties!=null) {
+        request.setAttribute("properties", properties);
+    };
 %>
 
 <c:set var="loggedUser" value="${loggedUser}" scope="session" />

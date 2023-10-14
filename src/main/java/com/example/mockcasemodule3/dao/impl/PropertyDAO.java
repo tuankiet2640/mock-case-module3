@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PropertyDAO implements IPropertyDAO {
-    private final String GET_ALL_PROPERTIES = "SELECT * FROM properties WHERE is_deleted=0";
+    private final String GET_ALL_PROPERTIES = "SELECT * FROM properties p JOIN seller s ON p.seller_id=s.user_id WHERE p.is_deleted=0 AND s.is_deleted=0";
     private final String UPDATE_PROPERTY = "UPDATE properties SET property_name=?, property_price=?, area=? WHERE property_id=?";
     private final String DELETE_PROPERTY= "UPDATE properties SET is_deleted=1 WHERE property_id=?";
     private final String INSERT_NEW_PROPERTY= "INSERT INTO properties (property_name,property_price,area,address_id, seller_id) VALUES (?,?,?,?,?)";

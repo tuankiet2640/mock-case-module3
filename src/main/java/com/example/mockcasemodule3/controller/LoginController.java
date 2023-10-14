@@ -1,24 +1,19 @@
 package com.example.mockcasemodule3.controller;
 
 
-import com.example.mockcasemodule3.dao.IPropertyDAO;
 import com.example.mockcasemodule3.dao.impl.PropertyDAO;
 import com.example.mockcasemodule3.dao.impl.SellerDAO;
-import com.example.mockcasemodule3.model.properties.Property;
 import com.example.mockcasemodule3.model.users.Role;
 import com.example.mockcasemodule3.model.users.Seller;
 import com.example.mockcasemodule3.model.users.User;
 import com.example.mockcasemodule3.service.impl.UserService;
 
-import javax.annotation.PostConstruct;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.util.List;
 
 @WebServlet("/login")
 public class LoginController extends HttpServlet {

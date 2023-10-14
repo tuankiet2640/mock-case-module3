@@ -6,11 +6,12 @@ import com.example.mockcasemodule3.dao.impl.UserDAO;
 import com.example.mockcasemodule3.model.users.Role;
 import com.example.mockcasemodule3.model.users.User;
 import com.example.mockcasemodule3.service.IUserService;
+import jBCrypt.src.org.mindrot.jbcrypt.BCrypt;
 
 import java.util.List;
 
 public class UserService implements IUserService {
-     private static final UserDAO userDAO= new UserDAO();
+     private static final IUserDAO userDAO= new UserDAO();
      private static final RoleDAO roleDAO= new RoleDAO();
     @Override
     public List<User> getAllUser() {
@@ -23,8 +24,8 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public boolean addNewUser(User user) {
-        return false;
+    public int addNewUser(User user) {
+        return userDAO.addNewUser(user);
     }
 
     @Override
@@ -39,8 +40,11 @@ public class UserService implements IUserService {
 
     public boolean checkUserLogin(String username, String password){
         List<User> users = getAllUser();
+        String hashedPassword;
+
         for (User user: users){
-            if ((username.equals(user.getUsername()) && (password.equals(user.getPassword())))){
+            hashedPassword = userDAO.getHashedPassword(username);
+            if ((username.equals(user.getUsername()) && (BCrypt.checkpw(password, hashedPassword)))){
                 return true;
             }
         }
