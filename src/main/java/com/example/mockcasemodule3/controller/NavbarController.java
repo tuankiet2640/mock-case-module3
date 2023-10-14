@@ -26,9 +26,6 @@ public class NavbarController extends HttpServlet {
         else if(page.equals("about")){
             req.getRequestDispatcher("about.jsp").forward(req, res);
         }
-//        else if(page.equals("contact")){
-//            req.getRequestDispatcher("contact.jsp").forward(req, res);
-//        }
     }
 
 }

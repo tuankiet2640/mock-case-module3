@@ -70,6 +70,11 @@ public class LoginController extends HttpServlet {
                 res.sendRedirect("/seller");
 
             }
+            if (role.getRoleName().equals("customer")) {
+                dispatcher = req.getRequestDispatcher("WEB-INF/users/customer/customer.jsp");
+                dispatcher.forward(req, res);
+            }
+
 
         } else {
             out.print("<script>");

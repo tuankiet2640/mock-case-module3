@@ -38,6 +38,10 @@
     House number:
     <input type="text" name="houseNumber"><br>
 
+    <button class="btn btn-lg btn-success">
+        <a href="${pageContext.request.contextPath}/seller">Cancel</a>
+    </button>
+
     <input type="submit" value="Create Property">
 
 </form>
