@@ -10,7 +10,7 @@
     <style>
         body {
             background: #f1f1f1;
-            padding: 2em;
+            padding: 60px 2em 2em;
         }
 
         .form-container {
@@ -52,11 +52,50 @@
         input[type="submit"]:hover {
             background-color: #45a049;
         }
+        .error{
+            color: red;
+            font-size: 30px;
+        }
+        #navbar {
+            background: #333;
+            color: #fff;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            max-height: 60px;
+        }
+
+        #navbar ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        #navbar li {
+            display: inline-block;
+        }
+
+        #navbar a {
+            color: #fff;
+            text-decoration: none;
+            padding: 15px 20px;
+            display: block;
+        }
     </style>
 
 </head>
 
 <body>
+<header>
+    <div id="navbar">
+        <jsp:include page="navbar.jsp"/>
+    </div>
+    <c:if test="${not empty error}">
+        <div class="error">${error}</div>
+    </c:if>
+
+</header>
 
 <div class="form-container">
 

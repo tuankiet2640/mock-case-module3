@@ -19,7 +19,7 @@
             if(session.getAttribute("loggedUser") != null){
         %>
         WELCOME <%=
-            (String)session.getAttribute("loggedUser")
+            ((String)session.getAttribute("loggedUser")).toUpperCase()
         %>
         <li>
         <a href="/logout">Logout</a>

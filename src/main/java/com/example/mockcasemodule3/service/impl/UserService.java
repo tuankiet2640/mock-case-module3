@@ -72,6 +72,18 @@ public class UserService implements IUserService {
         return null;
     }
 
+    @Override
+    public boolean isUserNameDuplicate(String username) {
+        List<User> users= getAllUser();
+        for (User user:users){
+            if (username.equals(user.getUsername())){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
     public Role getRoleById(int roleId) {
         List<Role> roles= roleDAO.getAllRole();
         for (Role role :roles){

@@ -23,19 +23,28 @@ public class RegisterController extends HttpServlet {
 
         String username = req.getParameter("username");
 
-
-        String plainPassword = req.getParameter("password");
-        String password = BCrypt.hashpw(plainPassword, BCrypt.gensalt());
-
-        String phoneNumber = req.getParameter("phoneNumber");
-        String hoTen = req.getParameter("hoTen");
-        String email = req.getParameter("email");
-
         IUserService userService= new UserService();
-        int userId=userService.addNewUser(new User(username,password));
 
-        ISellerService sellerService= new SellerService();
-        sellerService.addNewSeller(new Seller(userId,username,password,phoneNumber,hoTen,email));
-        res.sendRedirect("/index");
+        boolean isUserNameDuplicate= userService.isUserNameDuplicate(username);
+        if (!isUserNameDuplicate) {
+
+            String plainPassword = req.getParameter("password");
+            String password = BCrypt.hashpw(plainPassword, BCrypt.gensalt());
+
+            String phoneNumber = req.getParameter("phoneNumber");
+            String hoTen = req.getParameter("hoTen");
+            String email = req.getParameter("email");
+
+            int userId = userService.addNewUser(new User(username, password));
+
+            ISellerService sellerService = new SellerService();
+            sellerService.addNewSeller(new Seller(userId, username, password, phoneNumber, hoTen, email));
+            res.sendRedirect("/index");
+        } else {
+            req.setAttribute("error", "Username already exists!");
+            req.getRequestDispatcher("/register.jsp").forward(req, res);
+            return;
+
+        }
     }
 }

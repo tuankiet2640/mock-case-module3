@@ -4,9 +4,44 @@
     <title>ABOUT</title>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style>
+        #navbar {
+            background: #333;
+            color: #fff;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            max-height: 60px;
+        }
+
+        #navbar ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        #navbar li {
+            display: inline-block;
+        }
+
+        #navbar a {
+            color: #fff;
+            text-decoration: none;
+            padding: 15px 20px;
+            display: block;
+        }
+    </style>
 
 </head>
 <body >
+<header>
+    <div id="navbar">
+        <jsp:include page="navbar.jsp"/>
+    </div>
+    <h2>ABOUT</h2>
+</header>
+
 <p charset="UTF-8">
 About
 /ə'baʊt/

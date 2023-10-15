@@ -1,6 +1,7 @@
 <%@ page import="com.example.mockcasemodule3.model.properties.Property" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.example.mockcasemodule3.dao.impl.PropertyDAO" %>
+<%@ page import="jBCrypt.src.org.mindrot.jbcrypt.BCrypt" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="C"  uri="http://java.sun.com/jsp/jstl/core"%>
@@ -73,7 +74,7 @@
 <body>
 
 <header>
-    <h1>Welcome to >>>>!</h1>
+    <h1>Welcome to Winz Real Estat3!</h1>
     <div id="navbar">
         <jsp:include page="navbar.jsp"/>
     </div>
@@ -102,7 +103,6 @@
     </c:forEach>
 
 </div>
-
 
 </body>
 </html>

@@ -9,8 +9,11 @@ public interface IUserService {
     List<User> getAllUser();
     int addNewUser(User user);
 
+    Role getRoleById(int roleId);
     User getOneUser(int id);
     boolean editUser(User user);
     boolean removeUser(int id);
     Role getUserRole(User user);
+
+    boolean isUserNameDuplicate(String username);
 }

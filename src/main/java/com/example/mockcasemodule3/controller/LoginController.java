@@ -53,8 +53,7 @@ public class LoginController extends HttpServlet {
             session.setAttribute("role", role.getRoleName());
 
             if (role.getRoleName().equals("admin")) {
-                dispatcher = req.getRequestDispatcher("WEB-INF/users/admin/admin.jsp");
-                dispatcher.forward(req, res);
+                res.sendRedirect("/admin");
             }
             if (role.getRoleName().equals("seller")) {
 
@@ -66,8 +65,7 @@ public class LoginController extends HttpServlet {
 
             }
             if (role.getRoleName().equals("customer")) {
-                dispatcher = req.getRequestDispatcher("WEB-INF/users/customer/customer.jsp");
-                dispatcher.forward(req, res);
+                res.sendRedirect("/seller");
             }
 
 

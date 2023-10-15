@@ -1,6 +1,7 @@
 package com.example.mockcasemodule3.dao.impl;
 
 import com.example.mockcasemodule3.dao.IUserDAO;
+import com.example.mockcasemodule3.model.users.Admin;
 import com.example.mockcasemodule3.model.users.Role;
 import com.example.mockcasemodule3.model.users.User;
 import com.example.mockcasemodule3.service.impl.UserService;
@@ -11,9 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDAO implements IUserDAO {
-    private final String select_all_user="SELECT*FROM users";
+    private final String select_all_user="SELECT*FROM users WHERE NOT role_id=3";
     private final String REGISTER_NEW_USER="INSERT INTO users (username,password,role_id) VALUES (?,?,2)";
-
     @Override
     public List<User> getAllUser() {
         UserService userService=new UserService();
