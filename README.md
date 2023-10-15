@@ -56,3 +56,10 @@ create table if not exists users
         foreign key (role_id) references role (role_id)
 );
 
+insert into role (role_id, role_name)
+values 
+(1,"customer"),
+(2,"seller"),
+(3,"admin")
+;
+
